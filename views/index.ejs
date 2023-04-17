@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chris MacDonald">
+    <title>Loan List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+        thead {
+            background-color: #ffa07a;
+        }
+        h1, h2, td, th {
+            text-align: center;
+        }
+    </style>
+</head>
+    <body>
+        <h1>Loan Lists || EJS View</h1>
+        <h2>Customers</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Created Date</th>
+                    <th>Modified Date</th>
+                    <th>Is Deleted</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through customers data and populate the table rows -->
+                <% for (let i = 0; i < customers.length; i++) { %>
+                    <tr>
+                        <td><%= customers[i].id %></td>
+                        <td><%= customers[i].name %></td>
+                        <td><%= customers[i].firstName %></td>
+                        <td><%= customers[i].middleName %></td>
+                        <td><%= customers[i].lastName %></td>
+                        <td><%= customers[i].email %></td>
+                        <td><%= customers[i].phone %></td>
+                        <td><%= customers[i].dateOfBirth %></td>
+                        <td><%= customers[i].gender %></td>
+                        <td><%= customers[i].createdDate %></td>
+                        <td><%= customers[i].modifiedDate %></td>
+                        <td><%= customers[i].isDeleted %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <h2>Loans</h2>
+        <table>
+            <thead>
+                <th>Customer ID</th>
+                <th>Name</th>
+                <th>Loan Type</th>
+                <th>Loan Number</th>
+                <th>Loan Amount</th>
+                <th>Interest Rate</th>
+                <th>Loan Term Years</th>
+                <th>Start Date</th>
+                <th>Created Date</th>
+                <th>Inserted Date</th>
+                <th>Is Deleted</th>
+            </thead>
+            <tbody>
+                <!-- Loop through customers data and populate the table rows -->
+                <% for (let i = 0; i < customers.length; i++) { %>
+                    <!-- Loop through loans data and populate the table rows -->
+                    <% for (let l = 0; l < customers[i].loan.length; l++) { %>
+                        <tr>
+                            <td><%= customers[i].id %></td>
+                            <td><%= customers[i].name %></td>
+                            <td><%= customers[i].loan[l].loanType %></td>
+                            <td><%= customers[i].loan[l].loanNumber %></td>
+                            <td><%= customers[i].loan[l].loanAmount %></td>
+                            <td><%= customers[i].loan[l].interestRate %></td>
+                            <td><%= customers[i].loan[l].loanTermYears %></td>
+                            <td><%= customers[i].loan[l].startDate %></td>
+                            <td><%= customers[i].loan[l].createdDate %></td>
+                            <td><%= customers[i].loan[l].insertedDate %></td>
+                            <td><%= customers[i].loan[l].isDeleted %></td>
+                        </tr>
+                    <% } %>
+                <% } %>
+            </tbody>
+        </table>
+        <h2>Ledger</h2>
+        <table>
+            <thead>
+                <th>Customer ID</th>
+                <th>Name</th>
+                <th>Loan Number</th>
+                <th>Payment Amount</th>
+                <th>Interest Rate</th>
+                <th>Principal</th>
+                <th>Created Date</th>
+                <th>Inserted Date</th>
+                <th>Is Deleted</th>
+            </thead>
+            <tbody>
+                <!-- Loop through customers data and populate the table rows -->
+                <% for (let i = 0; i < customers.length; i++) { %>
+                    <!-- Loop through ledger data and populate the table rows -->
+                    <% for (let k = 0; k < customers[i].ledger.length; k++) { %>
+                        <tr>
+                            <td><%= customers[i].id %></td>
+                            <td><%= customers[i].name %></td>
+                            <td><%= customers[i].ledger[k].loanNumber %></td>
+                            <td><%= customers[i].ledger[k].paymentAmount %></td>
+                            <td><%= customers[i].ledger[k].interestRate %></td>
+                            <td><%= customers[i].ledger[k].principal %></td>
+                            <td><%= customers[i].ledger[k].createdDate %></td>
+                            <td><%= customers[i].ledger[k].insertedDate %></td>
+                            <td><%= customers[i].ledger[k].isDeleted %></td>
+                        </tr>
+                    <% } %>
+                <% } %>
+            </tbody>
+        </table>
+    </body>
+</html>

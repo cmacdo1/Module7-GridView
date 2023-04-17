@@ -1,0 +1,107 @@
+// loanList.pug
+doctype html
+html
+  head
+    title Loan Lists
+    style.
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+      h1, h2, td, th {
+          text-align: center;
+      }
+  body
+    h1 Loan Lists || Pug View
+    h2 Customers 
+    table
+      tr(style="background-color: #ffa07a;")
+        th Customer ID
+        th Name
+        th First Name
+        th Middle Name
+        th Last Name
+        th Email
+        th Phone Number
+        th Date of Birth 
+        th Gender 
+        th Created Date
+        th Modified Date 
+        th Is Deleted 
+      // Loop through customers data and populate the table rows
+      each customer in customers
+        tr
+          td= customer.id
+          td= customer.name
+          td= customer.firstName
+          td= customer.middleName 
+          td= customer.lastName
+          td= customer.email
+          td= customer.phone
+          td= customer.dateOfBirth
+          td= customer.gender
+          td= customer.createdDate 
+          td= customer.modifiedDate 
+          td= customer.isDeleted 
+    h2 Loans 
+    table
+      tr(style="background-color: #ffa07a;")
+        th Customer ID
+        th Name
+        th Loan Type 
+        th Loan Number
+        th Loan Amount
+        th Interest Rate
+        th Loan Term Years
+        th Start Date 
+        th Created Date
+        th Inserted Date 
+        th Is Deleted 
+      // Loop through loans data and populate the table rows
+      each customer in customers
+        tr
+          td= customer.id
+          td= customer.name
+          each loan in customer.loan
+            td= loan.loanType
+            td= loan.loanNumber 
+            td= loan.loanAmount
+            td= loan.interestRate
+            td= loan.loanTermYears
+            td= loan.startDate
+            td= loan.createdDate 
+            td= loan.insertedDate
+            td= loan.isDeleted 
+    h2 Ledger 
+    table
+      tr(style="background-color: #ffa07a;")
+        th Customer ID
+        th Name
+        th Loan Number 
+        th Payment Amount
+        th Interest Rate
+        th Principal
+        th Created Date
+        th Inserted Date 
+        th Is Deleted 
+      // Loop through ledger data and populate the table rows
+      each customer in customers
+          each ledger in customer.ledger
+            tr 
+                td= customer.id 
+                td= customer.name 
+                td= ledger.loanNumber 
+                td= ledger.paymentAmount 
+                td= ledger.interestRate 
+                td= ledger.principal 
+                td= ledger.createdDate 
+                td= ledger.insertedDate 
+                td= ledger.isDeleted 
